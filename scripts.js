@@ -145,6 +145,10 @@ function initializeMap() {
 
 function showMap(event = null) {
   if (event instanceof Event) event.preventDefault();
+  
+  // ⬅️ This line updates currentIndex to match courseItems
+  currentIndex = courseItems.findIndex(item => item.type === "map");
+
   const dynamicContent = document.getElementById("dynamicContent");
 
   dynamicContent.innerHTML = `
@@ -160,17 +164,15 @@ function showMap(event = null) {
     </div>
   `;
 
-  requestAnimationFrame(() => {
-    setTimeout(() => {
-      if (!mapInitialized) {
-        initializeMap();
-      } else {
-        map.invalidateSize();
-        showAll();
-      }
-    }, 100);
-  });
+  setTimeout(() => {
+    if (mapInitialized) {
+      map.remove();
+      mapInitialized = false;
+    }
+    initializeMap();
+  }, 100);
 }
+
 
 function showAll() {
   clearMarkers();
