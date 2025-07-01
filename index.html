@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fitness Academy</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body>
+  <header>
+    <div class="header-left">Overview of Fitness Academy</div>
+    <div class="header-right">
+      <img src="Images/logo.png" alt="Logo" class="logo" />
+    </div>
+  </header>
+
+  <div class="content-wrapper">
+
+    <!-- LEFT: Course Menu -->
+    <div class="course-menu">
+      <div class="main-header" onclick="toggleAllSubsections()">
+        <span>Course Sections</span>
+        <span id="mainArrow">▲</span>
+      </div>
+
+      <ul class="main-sections">
+        <li>
+          <strong>📁 Workout techniques</strong>
+          <ul class="subsection-list">
+            <li><a href="#" onclick="showWelcomeMessage()">👋 Welcome to the Fitness Academy!</a></li>
+            <li><a href="#" onclick="showVideo('Videos/warmup.mp4')">🔥▶️ Let's start with a quick warm-up!</a></li>
+            <li><a href="#" onclick="showQuiz('quiz1')">💡Quiz 1</a></li>
+            <li><a href="#" onclick="showVideo('Videos/lunges.mp4')">▶️ Lunges</a></li>
+            <li><a href="#" onclick="showVideo('Videos/deadlift.mp4')">▶️ Deadlift</a></li>
+            <li><a href="#" onclick="showVideo('Videos/arnoldpress.mp4')">▶️ Arnold Press</a></li>
+            <li><a href="#" onclick="showVideo('Videos/benchpress.mp4')">▶️ Bench Press</a></li>
+            <li><a href="#" onclick="showVideo('Videos/pushup.mp4')">▶️ Push-ups</a></li>
+            <li><a href="#" onclick="showVideo('Videos/widegrip.mp4')">▶️ Wide Grip Pulldown</a></li>
+            <li><a href="#" onclick="showVideo('Videos/bentover.mp4')">▶️ Dumbbell bent over</a></li>
+            <li><a href="#" onclick="showVideo('Videos/cardio.mp4')">🏃▶️ Fun 10 mins cardio workout</a></li>
+            <li><a href="#" onclick="showVideo('Videos/cooldown.mp4')">🧘▶️ Cooldown</a></li>
+            <li><a href="#" onclick="showVideo('Videos/MISTAKES.mp4')">▶️ 5 Fitness <strong>Mistakes</strong></a></li>
+            <li><a href="#" onclick="showQuiz('quiz3')">💡Quiz 2</a></li>
+            <li><a href="#" onclick="showMap(event)">📍Fitness Academy Locations</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <strong>📁 Nutrition</strong>
+          <ul class="subsection-list">
+            <li><a href="#" onclick="showVideo('Videos/calc.mp4')">▶️ Learn how to calculate your calories &amp; macronutrients</a></li>
+            <li><a href="#" onclick="showQuiz('quiz2')">💡Quiz 3</a></li>
+            <li><a href="#" onclick="showVideo('Videos/bestfood.mp4')">🥗▶️ Suggested high protein food</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- RIGHT: Dynamic Content + Next Button -->
+    <div id="mainContent" class="main-content-container">
+      <div id="dynamicContent"></div>
+      <button id="nextButton">➡️ Next</button>
+    </div>
+  </div>
+
+  <div id="popupMessage" class="popup-message"></div>
+  <script src="scripts.js"></script>
+</body>
+</html>
