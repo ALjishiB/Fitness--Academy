@@ -1,5 +1,6 @@
 
 function showWelcomeMessage() {
+  currentIndex = courseItems.findIndex(item => item.type === "welcome");
   const dynamicContent = document.getElementById("dynamicContent");
   dynamicContent.innerHTML = `
     <div class="welcome-message">
@@ -30,6 +31,7 @@ function toggleAllSubsections() {
 }
 
 function showVideo(videoSrc) {
+  currentIndex = courseItems.findIndex(item => item.type === "video" && item.src === videoSrc);
   const dynamicContent = document.getElementById("dynamicContent");
   dynamicContent.innerHTML = `
     <video controls autoplay style="width: 100%; border-radius: 10px;">
@@ -40,6 +42,7 @@ function showVideo(videoSrc) {
 }
 
 function showQuiz(quizId) {
+  currentIndex = courseItems.findIndex(item => item.type === "quiz" && item.id === quizId);
   const dynamicContent = document.getElementById("dynamicContent");
   let quizHTML = "";
 
@@ -227,8 +230,33 @@ function showItem(index) {
   }
 }
 
-document.getElementById("nextButton").addEventListener("click", () => {
+
+
+function continueToNext() {
   currentIndex++;
-  if (currentIndex >= courseItems.length) currentIndex = 0;
-  showItem(currentIndex);
-});
+
+  if (currentIndex < courseItems.length) {
+    showItem(currentIndex);
+  } else {
+    showCompletionPopup();
+  }
+}
+
+
+document.getElementById("nextButton").addEventListener("click", continueToNext);
+function showCompletionPopup() {
+  // Prevent duplicate popups
+  if (document.getElementById("completionPopup")) return;
+
+  const popup = document.createElement("div");
+  popup.id = "completionPopup";
+  popup.className = "completion-popup";
+  popup.innerHTML = `
+    <h2>🎉 You've completed the course!</h2>
+    <p>Well done on finishing your fitness journey. You're amazing 💪</p>
+    <button onclick="document.getElementById('completionPopup').remove()">✖ Yay!</button>
+  `;
+  document.body.appendChild(popup); // ⬅️ append to body, not dynamicContent
+}
+
+
