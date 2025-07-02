@@ -28,35 +28,34 @@
 
       <ul class="main-sections">
         <li>
-          <strong>📁 Workout techniques</strong>
-          <ul class="subsection-list">
-            <li><a href="#" onclick="showWelcomeMessage()">👋 Welcome to the Fitness Academy!</a></li>
-            <li><a href="#" onclick="showVideo('Videos/warmup.mp4')">🔥▶️ Let's start with a quick warm-up!</a></li>
-            <li><a href="#" onclick="showQuiz('quiz1')">💡Quiz 1</a></li>
-            <li><a href="#" onclick="showVideo('Videos/lunges.mp4')">▶️ Lunges</a></li>
-            <li><a href="#" onclick="showVideo('Videos/deadlift.mp4')">▶️ Deadlift</a></li>
-            <li><a href="#" onclick="showVideo('Videos/arnoldpress.mp4')">▶️ Arnold Press</a></li>
-            <li><a href="#" onclick="showVideo('Videos/benchpress.mp4')">▶️ Bench Press</a></li>
-            <li><a href="#" onclick="showVideo('Videos/pushup.mp4')">▶️ Push-ups</a></li>
-            <li><a href="#" onclick="showVideo('Videos/widegrip.mp4')">▶️ Wide Grip Pulldown</a></li>
-            <li><a href="#" onclick="showVideo('Videos/bentover.mp4')">▶️ Dumbbell bent over</a></li>
-            <li><a href="#" onclick="showVideo('Videos/cardio.mp4')">🏃▶️ Fun 10 mins cardio workout</a></li>
-            <li><a href="#" onclick="showVideo('Videos/cooldown.mp4')">🧘▶️ Cooldown</a></li>
-            <li><a href="#" onclick="showVideo('Videos/MISTAKES.mp4')">▶️ 5 Fitness <strong>Mistakes</strong></a></li>
-            <li><a href="#" onclick="showQuiz('quiz3')">💡Quiz 2</a></li>
-            <li><a href="#" onclick="showMap(event)">📍Fitness Academy Locations</a></li>
-          </ul>
-        </li>
+        <strong>📁 Workout techniques</strong>
+        <ul class="subsection-list">
+         <li><a href="#" data-id="welcome" onclick="showItem(0)">👋 Welcome to the Fitness Academy!</a></li>
+         <li><a href="#" data-id="warmup" onclick="showItem(1)">🔥▶️ Let's start with a quick warm-up!</a></li>
+         <li><a href="#" data-id="quiz1" onclick="showItem(2)">💡 Quiz 1</a></li>
+         <li><a href="#" data-id="lunges" onclick="showItem(3)">▶️ Lunges</a></li>
+         <li><a href="#" data-id="deadlift" onclick="showItem(4)">▶️ Deadlift</a></li>
+         <li><a href="#" data-id="arnoldpress" onclick="showItem(5)">▶️ Arnold Press</a></li>
+         <li><a href="#" data-id="benchpress" onclick="showItem(6)">▶️ Bench Press</a></li>
+         <li><a href="#" data-id="pushup" onclick="showItem(7)">▶️ Push-ups</a></li>
+        <li><a href="#" data-id="widegrip" onclick="showItem(8)">▶️ Wide Grip Pulldown</a></li>
+         <li><a href="#" data-id="bentover" onclick="showItem(9)">▶️ Dumbbell bent over</a></li>
+         <li><a href="#" data-id="cardio" onclick="showItem(10)">🏃▶️ Fun 10 mins cardio workout</a></li>
+         <li><a href="#" data-id="cooldown" onclick="showItem(11)">🧘▶️ Cooldown</a></li>
+         <li><a href="#" data-id="mistakes" onclick="showItem(12)">▶️ 5 Fitness <strong>Mistakes</strong></a></li>
+         <li><a href="#" data-id="quiz2" onclick="showItem(13)">💡 Quiz 2</a></li>
+         <li><a href="#" data-id="map" onclick="showItem(14)">📍Fitness Academy Locations</a></li>
+</ul>
 
-        <li>
-          <strong>📁 Nutrition</strong>
-          <ul class="subsection-list">
-            <li><a href="#" onclick="showVideo('Videos/calc.mp4')">▶️ Learn how to calculate your calories &amp; macronutrients</a></li>
-            <li><a href="#" onclick="showQuiz('quiz2')">💡Quiz 3</a></li>
-            <li><a href="#" onclick="showVideo('Videos/bestfood.mp4')">🥗▶️ Suggested high protein food</a></li>
-          </ul>
-        </li>
-      </ul>
+<li>
+    <strong>📁 Nutrition</strong>
+    <ul class="subsection-list">
+      <li><a href="#" data-id="calc" onclick="showItem(15)">▶️ Learn how to calculate your calories &amp; macronutrients</a></li>
+      <li><a href="#" data-id="quiz3" onclick="showItem(16)">💡 Quiz 3</a></li>
+      <li><a href="#" data-id="bestfood" onclick="showItem(17)">🥗▶️ Suggested high protein food</a></li>
+    </ul>
+  </li>
+
     </div>
 
     <!-- RIGHT: Dynamic Content + Next Button -->

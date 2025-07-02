@@ -1,6 +1,6 @@
-
+//this is to show the welcoming message
 function showWelcomeMessage() {
-  currentIndex = courseItems.findIndex(item => item.type === "welcome");
+  currentIndex = courseItems.findIndex(item => item.type === "welcome");//helps with the next button
   const dynamicContent = document.getElementById("dynamicContent");
   dynamicContent.innerHTML = `
     <div class="welcome-message">
@@ -15,7 +15,7 @@ function showWelcomeMessage() {
 window.addEventListener("DOMContentLoaded", () => {
   showItem(currentIndex);
 });
-
+//this function helps in toggling the course menu
 let isOpen = true;
 
 function toggleAllSubsections() {
@@ -29,7 +29,7 @@ function toggleAllSubsections() {
   arrow.textContent = isOpen ? '▼' : '▲';
   isOpen = !isOpen;
 }
-
+//showing the video on the container and it has autoplay
 function showVideo(videoSrc) {
   currentIndex = courseItems.findIndex(item => item.type === "video" && item.src === videoSrc);
   const dynamicContent = document.getElementById("dynamicContent");
@@ -40,7 +40,7 @@ function showVideo(videoSrc) {
     </video>
   `;
 }
-
+//showing the quiz on the container and it call the submitQuiz 
 function showQuiz(quizId) {
   currentIndex = courseItems.findIndex(item => item.type === "quiz" && item.id === quizId);
   const dynamicContent = document.getElementById("dynamicContent");
@@ -60,7 +60,7 @@ function showQuiz(quizId) {
       <p id="quizResult" style="margin-top: 10px; font-weight: bold;"></p>
       </div>
     `;
-  } else if (quizId === "quiz2") {
+  } else if (quizId === "quiz3") {
     quizHTML = `
      <div class="quiz-container">
       <h2>📝 Quiz 3: Nutrition</h2>
@@ -74,7 +74,7 @@ function showQuiz(quizId) {
       <p id="quizResult" style="margin-top: 10px; font-weight: bold;"></p>
       </div>
     `;
-  } else if (quizId === "quiz3") {
+  } else if (quizId === "quiz2") {
     quizHTML = `
      <div class="quiz-container">
       <h2>📝 Quiz 2: Mistakes</h2>
@@ -92,7 +92,7 @@ function showQuiz(quizId) {
 
   dynamicContent.innerHTML = quizHTML;
 }
-
+//checking the user answers
 function submitQuiz(questionName, correctAnswer) {
   const result = document.getElementById("quizResult");
   const answer = document.querySelector(`input[name="${questionName}"]:checked`);
@@ -108,7 +108,7 @@ function submitQuiz(questionName, correctAnswer) {
     showPopup("❌ Incorrect. Try again!", "red"); 
   }
 }
-
+//this function is to tell the user about their answer
 function showPopup(message, bgColor) {
   const popup = document.getElementById("popupMessage");
   popup.textContent = message;
@@ -145,11 +145,10 @@ function initializeMap() {
   showAll();
   mapInitialized = true;
 }
-
+//showing the map in the container with the buttons to fillter the location
 function showMap(event = null) {
   if (event instanceof Event) event.preventDefault();
   
-  // ⬅️ This line updates currentIndex to match courseItems
   currentIndex = courseItems.findIndex(item => item.type === "map");
 
   const dynamicContent = document.getElementById("dynamicContent");
@@ -196,39 +195,46 @@ function clearMarkers() {
     map.removeLayer(markers[key]);
   }
 }
-
+//helps with the next button
 const courseItems = [
-  { type: "welcome" },
-  { type: "video", src: "Videos/warmup.mp4" },
-  { type: "quiz", id: "quiz1" },
-  { type: "video", src: "Videos/lunges.mp4" },
-  { type: "video", src: "Videos/deadlift.mp4" },
-  { type: "video", src: "Videos/arnoldpress.mp4" },
-  { type: "video", src: "Videos/benchpress.mp4" },
-  { type: "video", src: "Videos/pushup.mp4" },
-  { type: "video", src: "Videos/widegrip.mp4" },
-  { type: "video", src: "Videos/bentover.mp4" },
-  { type: "video", src: "Videos/cardio.mp4" },
-  { type: "video", src: "Videos/cooldown.mp4" },
-  { type: "video", src: "Videos/MISTAKES.mp4" },
-  { type: "quiz", id: "quiz3" },
-  { type: "map" },
-  { type: "video", src: "Videos/calc.mp4" },
-  { type: "quiz", id: "quiz2" },
-  { type: "video", src: "Videos/bestfood.mp4" }
+  { id: "welcome", type: "welcome" },
+  { id: "warmup", type: "video", src: "Videos/warmup.mp4" },
+  { id: "quiz1", type: "quiz", id: "quiz1" },
+  { id: "lunges", type: "video", src: "Videos/lunges.mp4" },
+  { id: "deadlift", type: "video", src: "Videos/deadlift.mp4" },
+  { id: "arnoldpress", type: "video", src: "Videos/arnoldpress.mp4" },
+  { id: "benchpress", type: "video", src: "Videos/benchpress.mp4" },
+  { id: "pushup", type: "video", src: "Videos/pushup.mp4" },
+  { id: "widegrip", type: "video", src: "Videos/widegrip.mp4" },
+  { id: "bentover", type: "video", src: "Videos/bentover.mp4" },
+  { id: "cardio", type: "video", src: "Videos/cardio.mp4" },
+  { id: "cooldown", type: "video", src: "Videos/cooldown.mp4" },
+  { id: "mistakes", type: "video", src: "Videos/MISTAKES.mp4" },
+  { id: "quiz2", type: "quiz", id: "quiz2" },
+  { id: "map", type: "map" },
+  { id: "calc", type: "video", src: "Videos/calc.mp4" },
+  { id: "quiz3", type: "quiz", id: "quiz3" },
+  { id: "bestfood", type: "video", src: "Videos/bestfood.mp4" }
 ];
+
 
 let currentIndex = 0;
 
 function showItem(index) {
+  currentIndex = index;
   const item = courseItems[index];
+
   switch (item.type) {
     case "welcome": showWelcomeMessage(); break;
     case "video": showVideo(item.src); break;
     case "quiz": showQuiz(item.id); break;
     case "map": showMap(); break;
   }
+
+  
+  setActiveLink(item.id);
 }
+
 
 
 
@@ -244,6 +250,7 @@ function continueToNext() {
 
 
 document.getElementById("nextButton").addEventListener("click", continueToNext);
+
 function showCompletionPopup() {
   // Prevent duplicate popups
   if (document.getElementById("completionPopup")) return;
@@ -254,9 +261,19 @@ function showCompletionPopup() {
   popup.innerHTML = `
     <h2>🎉 You've completed the course!</h2>
     <p>Well done on finishing your fitness journey. You're amazing 💪</p>
-    <button onclick="document.getElementById('completionPopup').remove()">✖ Yay!</button>
+    <button onclick="document.getElementById('completionPopup').remove()">🎉Yay!</button>
   `;
-  document.body.appendChild(popup); // ⬅️ append to body, not dynamicContent
+  document.body.appendChild(popup); 
 }
+function setActiveLink(id) {
+  const links = document.querySelectorAll('.subsection-list a');
+  links.forEach(link => {
+    link.classList.remove('active');
+    if (link.dataset.id === id) {
+      link.classList.add('active');
+    }
+  });
+}
+
 
 

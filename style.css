@@ -122,15 +122,35 @@ body {
         transition: all 0.2s ease;
       }
       
-      a:focus,
-      a:active {
-        outline: none;
-        border: 2px solid #ff6600; /* orange border on click */
-        background-color: #fff5eb; /* optional soft background */
-      }
+      a:focus
+      a.active {
+       border: 2px solid orange;
+       background-color: #fff5eb;
+       }
+
       a:hover {
         background-color: #fff5eb;
       }
+    .subsection-list a {
+      display: block;
+      padding: 10px 16px;
+      position: relative;
+      transition: background 0.3s;
+      border-left: 4px solid transparent; 
+      background-color: transparent;
+}
+
+     .subsection-list a.active {
+       background-color: #fff5eb;           
+       border-left: 4px solid orange;       
+       font-weight: bold;
+       color: black;
+}
+.subsection-list a:hover {
+  background-color: #f9e0c6;
+}
+
+
       .content-wrapper {
         display: flex;
         gap: 20px;
@@ -184,7 +204,7 @@ body {
       .quiz-container button:hover {
         background-color: #e65c00;
       }
-      .popup-message {
+ .popup-message {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -220,18 +240,8 @@ cursor: pointer;
 }
     
 
-    .categorybtn:hover {
-        background-color: lightyellow;
-        color: darkgoldenrod;
-    }
-
-    
-    
-    
-
-
-    #nextButton {
-  margin: 20px auto 0;   /* 20px top, auto left/right to center, 0 bottom */
+#nextButton {
+  margin: 20px auto 0;   
   display: block;
   padding: 12px 24px;
   font-size: 16px;
