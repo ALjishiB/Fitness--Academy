@@ -1,1 +1,1 @@
-Welcome to our fitness academy, you will find a full body workout and some nutrion informations, I hope you enjoy it.
+once you open our website link,You will find a course menu that will guide you through the exercises and the nutrition information.
